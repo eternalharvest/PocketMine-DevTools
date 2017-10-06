@@ -39,7 +39,10 @@ array_walk($includedPaths, function(&$path, $key){
 	}
 
 	//Convert to absolute path for base path detection
-	$path = rtrim(str_replace("\\", "/", $realPath), "/") . "/";
+	$path = rtrim(str_replace("\\", "/", $realPath), "/");
+	if(is_dir($path)) {
+		$path .= '/';
+	}
 });
 
 $basePath = "";
